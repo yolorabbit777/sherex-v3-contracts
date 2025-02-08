@@ -1,4 +1,4 @@
-# Pancake V3
+# Sherex V3
 
 
 ## Deployments
