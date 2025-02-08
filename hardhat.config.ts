@@ -81,13 +81,6 @@ const amoy: NetworkUserConfig = {
   gasPrice: 25000000000,  // 25 Gwei
 }
 
-const holesky: NetworkUserConfig = {
-  url: 'https://eth-holesky.g.alchemy.com/v2/eMY6MFJNWoq7P3I5EnZTmqHqOPSphnAq',
-  chainId: 17000,
-  accounts: [process.env.KEY_HOLESKY!],
-  gasPrice: 25000000000,
-}
-
 export default {
   networks: {
     hardhat: {
@@ -98,11 +91,20 @@ export default {
     ...(process.env.KEY_GOERLI && { goerli }),
     ...(process.env.KEY_ETH && { eth }),
     ...(process.env.KEY_AMOY && { amoy }),
-    ...(process.env.KEY_HOLESKY && { holesky }),
     // mainnet: bscMainnet,
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+    apiKey: process.env.ETHERSCAN_API_KEY || '',
+    // customChains: [
+    //   {
+    //     network: "amoy",
+    //     chainId: 80002,
+    //     urls: {
+    //       apiURL: "https://api-amoy.polygonscan.com/api",
+    //       browserURL: "https://amoy.polygonscan.com/"
+    //     }
+    //   }
+    // ]
   },
   solidity: {
     compilers: [DEFAULT_COMPILER_SETTINGS],
